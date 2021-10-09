@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 
 const indexRoutes = require('./routes/index');
@@ -15,10 +16,10 @@ mongoose.connect('mongodb+srv://root:toor@cluster0.vnmaf.mongodb.net/Cluster0?re
 //***middlewares***
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
-
+app.use(cors())
 
 //****rutas: ***
-app.use('/products/',indexRoutes);
+app.use('/',indexRoutes);
 /*app.get('/', (req,res)=>{
     res.send('Hello World')
  });*/
